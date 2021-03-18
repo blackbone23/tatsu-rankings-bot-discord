@@ -15,15 +15,9 @@ bot.on('ready', () => {
 
 bot.on('message', async msg => {
   if (msg.content.startsWith('!guild')) {
-    const guild = await curly.get('https://api.tatsu.gg/v1/guilds/173184118492889089/rankings/all', {
-      httpHeader: [
-        'Content-Type: application/json',
-        'Accept: application/json',
-        `Authorization: ${TATSUTOKEN}`
-      ],
-    })
-    console.log(guild.headers)
     if (msg.content.split(' ')[1]) {
+      const guild = await curly.get('https://api.tatsu.gg/v1/guilds/173184118492889089/rankings/all', { httpHeader: ['Content-Type: application/json', 'Accept: application/json', `Authorization: ${TATSUTOKEN}`], })
+      console.log(guild.headers)
       switch (msg.content.split(' ')[1]) {
         case 'rankings':
           if (msg.content.split(' ')[2]) {
