@@ -1,0 +1,49 @@
+The DDL : 
+
+create table users (
+   id char(10) PRIMARY KEY,
+   name char(50)
+);
+
+create table item (
+   id char(10) PRIMARY KEY,
+   name char(50)
+);
+
+create table user_items (
+   id char(10) PRIMARY KEY,
+   user_id char(10),
+	item_id char(10),
+	qty integer
+);
+
+create index user_items_idx ON user_items (id, user_id, item_id)
+
+create table trade (
+   id char(10) PRIMARY KEY,
+	target_user_items_id char(10),
+	target_qty integer,
+	exchange_user_items_id char(10),
+	exchange_qty integer,
+	created_at TIMESTAMP
+);
+
+create index trade_idx ON trade (id, target_user_items_id, exchange_user_items_id, created_at)
+
+
+The Query : 
+
+Version 1 : explain analyze select a.id, e.name, exchange_qty, d.name, target_qty,  created_at
+from trade as a
+join user_items as b on a.target_user_items_id = b.id
+join user_items as c on a.exchange_user_items_id = c.id
+join users as d on b.user_id = d.id
+join users as e on c.user_id = e.id
+where a.created_at between '2021-01-01' and '2021-01-31'
+
+
+Version 2 : explain analyze select a.id, (select name from users where id = c.user_id), exchange_qty, (select name from users where id = b.user_id), target_qty,  created_at
+from trade as a
+join user_items as b on a.target_user_items_id = b.id
+join user_items as c on a.exchange_user_items_id = c.id
+where a.created_at between '2021-01-01' and '2021-01-31'
