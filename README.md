@@ -1,5 +1,5 @@
-# Blackbone23 Bot Discord for Get Leaderboards from Tetsu API
-The purpose of this bot is for Tetsu Requirement
+# Blackbone23 Bot Discord for Get Leaderboards from Tatsu API
+The purpose of this bot is for Tatsu Requirement
 
 
 # Command
@@ -25,7 +25,7 @@ Link to article on SitePoint: [https://www.sitepoint.com/discord-bot-node-js/](h
 2. Run `npm install`
 3. Copy `.env.default` to `.env`
 4. Add Discord bot token into TOKEN variable in a `.env` file
-5. Add Tetsu API key into TETSUTOKEN in a `.env` file
+5. Add Tatsu API key into TATSUTOKEN in a `.env` file
 6. Run `node index.js` or `node main` if you're using nodemon just run `nodemon main`
 7. Interact with your Discord bot via your web browser
 

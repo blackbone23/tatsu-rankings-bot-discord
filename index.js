@@ -2,9 +2,9 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
-const TETSUTOKEN = process.env.TETSUTOKEN
+const TATSUTOKEN = process.env.TATSUTOKEN
 console.log(TOKEN)
-console.log(TETSUTOKEN)
+console.log(TATSUTOKEN)
 const { curly } = require('node-libcurl');
 
 bot.login(TOKEN);
@@ -19,7 +19,7 @@ bot.on('message', async msg => {
       httpHeader: [
         'Content-Type: application/json',
         'Accept: application/json',
-        `Authorization: ${TETSUTOKEN}`
+        `Authorization: ${TATSUTOKEN}`
       ],
     })
     console.log(guild.headers)
@@ -36,7 +36,7 @@ bot.on('message', async msg => {
                   httpHeader: [
                     'Content-Type: application/json',
                     'Accept: application/json',
-                    `Authorization: ${TETSUTOKEN}`
+                    `Authorization: ${TATSUTOKEN}`
                   ],
                 })
                 // console.log(user.data)
